@@ -1,17 +1,18 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Photo } from "../Model/user";
+import { Photo } from "../Model/photo";
 import dotenv from "dotenv";
+import { Student } from "../Model/student";
 dotenv.config();
 
-const AppDataSource = new DataSource({
+export const AppDataSource = new DataSource({
   type: "postgres",
   host: "localhost",
   port: 5432,
   username:  process.env.DB_USERNAME, 
   password: process.env.DB_PASSWORD,
   database: "postgres",
-  entities: [Photo],
+  entities: [Photo, Student],
   synchronize: true,
   logging: false,
 });
